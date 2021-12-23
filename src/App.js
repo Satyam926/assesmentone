@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
+import './components/style.css';
+import ContaierClass from './components/ContainerClass.js';
+import ContainerFunctional from './components/ContainerFunctional.js';
 
-function App() {
+class App extends Component{
+  state={
+    isClass:false,
+    isFunctional:false
+  }
+change1=()=>{
+ this.setState({isFunctional:!this.state.isFunctional})
+}
+change2=()=>{
+  this.setState({isClass:!this.state.isClass})
+}
+render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      
+        <div>
+            <h1 className='fontShadow'>Styling using functional and class component</h1>
+            <div className='flex center'>
+                <button className='btn'onClick={this.change1}>to see styling in functional component</button>
+                <button className='btn'onClick={this.change2}>to see styling in class component</button>
+
+            </div>
+          
+        </div>
+    
+
+     <div className='flex center'>
+       {this.state.isFunctional?
+     <ContainerFunctional/>:null}
+      {this.state.isClass?
+     <ContaierClass/>:null}
+     
+     </div>
+     
+
     </div>
   );
 }
-
+}
 export default App;
